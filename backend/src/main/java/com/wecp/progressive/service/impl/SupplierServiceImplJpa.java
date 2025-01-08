@@ -20,7 +20,6 @@ import java.util.List;
 @Service
 public class SupplierServiceImplJpa implements SupplierService {
 
-
     @Autowired
     WarehouseRepository warehouseRepository;
 
