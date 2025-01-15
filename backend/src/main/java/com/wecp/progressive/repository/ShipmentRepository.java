@@ -28,4 +28,8 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Integer> {
     @Transactional
     @Query("DELETE FROM Shipment s WHERE s.warehouse.warehouseId in (Select w.warehouseId from Warehouse w where w.supplier.supplierId = :supplierId)")
     void deleteBySupplierId(@Param("supplierId") int supplierId);
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1eee3bb0ecd58eb6a992a32ee4e9dc8c3743f758

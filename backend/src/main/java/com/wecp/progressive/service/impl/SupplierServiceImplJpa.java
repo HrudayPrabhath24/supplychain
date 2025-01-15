@@ -10,7 +10,6 @@ import com.wecp.progressive.repository.SupplierRepository;
 import com.wecp.progressive.repository.WarehouseRepository;
 import com.wecp.progressive.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +21,12 @@ import java.util.List;
 public class SupplierServiceImplJpa implements SupplierService {
 
     @Autowired
+<<<<<<< HEAD
     PasswordEncoder passwordEncoder;
 
     @Autowired
+=======
+>>>>>>> 1eee3bb0ecd58eb6a992a32ee4e9dc8c3743f758
     WarehouseRepository warehouseRepository;
 
     @Autowired
@@ -55,7 +57,10 @@ public class SupplierServiceImplJpa implements SupplierService {
         if (existingEmail != null) {
             throw new SupplierAlreadyExistsException("User with the given email address already exists: " + supplier.getEmail());
         }
+<<<<<<< HEAD
         supplier.setPassword(passwordEncoder.encode(supplier.getPassword()));
+=======
+>>>>>>> 1eee3bb0ecd58eb6a992a32ee4e9dc8c3743f758
         return supplierRepository.save(supplier).getSupplierId();
     }
 
@@ -66,6 +71,7 @@ public class SupplierServiceImplJpa implements SupplierService {
         return sortedSuppliers;
     }
 
+<<<<<<< HEAD
     @Override
     public void updateSupplier(Supplier supplier) throws SupplierAlreadyExistsException {
         if (!supplier.getRole().isBlank()) {
@@ -78,6 +84,19 @@ public class SupplierServiceImplJpa implements SupplierService {
             }
             supplierRepository.save(supplier);
         }
+=======
+   @Override
+    public void updateSupplier(Supplier supplier) throws SupplierAlreadyExistsException {
+        Supplier oldUser = supplierRepository.findByUsername(supplier.getUsername());
+       if (oldUser != null && oldUser.getSupplierId() != supplier.getSupplierId()) {
+            throw new SupplierAlreadyExistsException("User name Is Unavailable: " + supplier.getUsername());
+        }
+        Supplier existingEmail = supplierRepository.findByEmail(supplier.getEmail());
+        if (existingEmail != null && existingEmail.getSupplierId() != supplier.getSupplierId()) {
+            throw new SupplierAlreadyExistsException("User with the given email address already exists: " + supplier.getEmail());
+        }
+        supplierRepository.save(supplier);
+>>>>>>> 1eee3bb0ecd58eb6a992a32ee4e9dc8c3743f758
     }
 
     @Override
