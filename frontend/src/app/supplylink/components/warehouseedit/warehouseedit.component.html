@@ -22,7 +22,7 @@
         <div *ngIf="warehouseForm.get('capacity')?.invalid && warehouseForm.get('capacity')?.touched" class="error">
             <small *ngIf="warehouseForm.get('capacity')?.hasError('required')">Capacity is
                 required.</small>
-            <small *ngIf="warehouseForm.get('capacity')?.hasError('min')">Capacity be negative.</small>
+            <small *ngIf="warehouseForm.get('capacity')?.hasError('min')">Capacity cannot be negative.</small>
         </div>
     </div>
     <button type="submit" class="btn-submit">Update Warehouse</button>
