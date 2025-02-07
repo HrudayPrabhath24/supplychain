@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
                 },
                 error: (error) => {
                     console.log(error);
-                    this.errorMessage = error.error ?? "Please fill the form correctly";
+                    this.errorMessage = "Please fill the form correctly";
                 }
             });
         }
